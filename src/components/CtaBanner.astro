@@ -1,0 +1,59 @@
+---
+import { site } from '../data/site';
+---
+
+<aside class="cta">
+  <div class="cta-copy">
+    <p class="cta-eyebrow">Every Hour Counts</p>
+    <h2 class="cta-title">Water rising? Smoke in the air?</h2>
+  </div>
+  <a class="cta-btn" href={site.phoneHref}>Call Now — {site.phone}</a>
+</aside>
+
+<style>
+  .cta {
+    background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    color: #3a1118;
+    padding: clamp(40px, 5vw, 52px) var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .cta-copy {
+    text-align: center;
+  }
+  .cta-eyebrow {
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    font-weight: 600;
+    font-size: 13px;
+    margin: 0 0 8px;
+  }
+  .cta-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(24px, 3.5vw, 32px);
+    margin: 0;
+    color: var(--maroon-dark);
+  }
+  .cta-btn {
+    background: var(--maroon-dark);
+    color: var(--gold-pale);
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 17px;
+    padding: 18px 36px;
+    border-radius: 3px;
+    white-space: nowrap;
+    transition: filter 0.18s;
+  }
+  .cta-btn:hover {
+    color: var(--gold-pale);
+    filter: brightness(1.15);
+  }
+</style>

@@ -1,0 +1,7 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Centurion Restoration">
+  <rect width="64" height="64" rx="12" fill="#6B1F2E"/>
+  <g transform="translate(0,-1)">
+    <path d="M14 12 H50 V30 C50 42 42.5 49 32 54 C21.5 49 14 42 14 30 Z" fill="rgba(200,153,63,0.14)" stroke="#E3C173" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M32 22 L35.4 30 L43 33 L35.4 36 L32 44 L28.6 36 L21 33 L28.6 30 Z" fill="#E3C173"/>
+  </g>
+</svg>

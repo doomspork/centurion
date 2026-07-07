@@ -1,0 +1,72 @@
+---
+import { reviews } from '../data/site';
+---
+
+<section id="reviews" class="section reviews">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">In Their Words</span>
+      <h2 class="section-title">Neighbors Who Trusted Us</h2>
+    </div>
+
+    <div class="grid">
+      {
+        reviews.map((r) => (
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>{r.quote}</blockquote>
+            <figcaption>
+              {r.name} <span class="role">· {r.role}</span>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews {
+    background: var(--cream);
+  }
+  .section-head {
+    margin-bottom: 48px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .review {
+    background: #fff;
+    border: 1px solid rgba(107, 31, 46, 0.14);
+    border-radius: 5px;
+    padding: 30px 28px;
+    margin: 0;
+  }
+  .stars {
+    color: var(--gold-dark);
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 14px;
+  }
+  .review blockquote {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #3a2226;
+    margin: 0 0 20px;
+    font-style: italic;
+  }
+  .review figcaption {
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--maroon);
+  }
+  .role {
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+</style>

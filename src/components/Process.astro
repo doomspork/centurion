@@ -1,0 +1,62 @@
+---
+import { process } from '../data/site';
+---
+
+<section id="process" class="section process">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">How It Works</span>
+      <h2 class="section-title">From Crisis to Calm</h2>
+    </div>
+
+    <div class="steps">
+      {
+        process.map((step) => (
+          <div class="step">
+            <div class="coin">{step.numeral}</div>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .process {
+    background: var(--cream-2);
+  }
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 28px;
+  }
+  .step {
+    text-align: center;
+    padding: 0 12px;
+  }
+  .coin {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: var(--maroon);
+    color: var(--gold-light);
+    font-size: 24px;
+    margin: 0 auto 20px;
+    box-shadow: 0 8px 20px -8px rgba(72, 16, 25, 0.6);
+  }
+  .step h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink);
+    font-size: 17px;
+    margin: 0 0 8px;
+  }
+  .step p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+</style>

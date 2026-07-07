@@ -1,0 +1,208 @@
+/*
+ * Global design tokens + shared primitives for Centurion Restoration.
+ * The palette and type scale are lifted verbatim from the original design so
+ * the migration is pixel-faithful — but expressed once, as custom properties,
+ * instead of being repeated across dozens of inline style attributes.
+ */
+
+:root {
+  /* Brand palette */
+  --cream: #fbf6ec;        /* page background */
+  --cream-2: #f1e7d5;      /* alternating section background */
+  --ink: #2a1b1e;          /* primary text */
+  --ink-soft: #5a4a4d;     /* body copy on light */
+  --ink-mute: #6b5a5d;     /* meta text — darkened from #9a8a8d to clear AA on white */
+  --maroon: #6b1f2e;       /* primary brand */
+  --maroon-dark: #481019;  /* deep panels / strips */
+  --maroon-darkest: #2e0c13; /* footer */
+  --gold: #c8993f;         /* accent (decorative / on-dark use) */
+  --gold-dark: #7d5a14;    /* accessible gold for text on light backgrounds (AA >= 5:1) */
+  --gold-light: #e3c173;   /* accent highlight */
+  --gold-pale: #ead39a;    /* text on dark */
+  --parchment: #f6ecd9;    /* headings on dark */
+  --link: #8a2a3b;
+
+  /* Type */
+  --font-body: 'Barlow', system-ui, -apple-system, sans-serif;
+  --font-display: 'Cinzel', Georgia, 'Times New Roman', serif;
+  --font-condensed: 'Barlow Condensed', 'Barlow', sans-serif;
+
+  /* Layout */
+  --maxw: 1180px;
+  --gutter: clamp(20px, 5vw, 56px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background: var(--cream);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--maroon);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ---- Shared primitives ------------------------------------------------- */
+
+/* Centered content column */
+.container {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+/* Vertical rhythm for full-width sections */
+.section {
+  padding: clamp(56px, 7vw, 84px) var(--gutter);
+}
+
+/* Small uppercase kicker above headings */
+.eyebrow {
+  font-family: var(--font-condensed);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--gold-dark); /* readable on cream; dark sections override to --gold-light */
+}
+
+/* Section heading (Cinzel) */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--maroon);
+  font-size: clamp(28px, 4vw, 38px);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* Centered heading block (eyebrow + title) */
+.section-head {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.section-head .eyebrow {
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* Gold "coin" — reused for service + process badges */
+.coin {
+  font-family: var(--font-display);
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  transition: filter 0.18s, color 0.18s, background 0.18s;
+}
+.btn-gold {
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  color: #3a1118;
+  border: 1px solid #b0832f;
+}
+.btn-gold:hover {
+  color: #3a1118;
+  filter: brightness(1.05);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--gold-pale);
+  border: 1px solid rgba(227, 193, 115, 0.55);
+}
+.btn-outline:hover {
+  color: var(--parchment);
+  background: rgba(227, 193, 115, 0.1);
+}
+
+/* Pill badge (credentials) */
+.badge {
+  font-family: var(--font-condensed);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--gold-pale);
+  border: 1px solid rgba(227, 193, 115, 0.4);
+  border-radius: 3px;
+  padding: 8px 13px;
+}
+
+/* Diamond separator ◆ used between inline items */
+.diamond {
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Anchored sections must clear the sticky nav when jumped to */
+[id] {
+  scroll-margin-top: 88px;
+}
+
+/* Skip-to-content link: hidden until keyboard-focused */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 100;
+  background: var(--maroon);
+  color: var(--parchment);
+  font-family: var(--font-condensed);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 16px;
+  border-radius: 3px;
+  transition: top 0.18s;
+}
+.skip-link:focus {
+  top: 12px;
+  color: var(--parchment);
+  outline: 2px solid var(--gold-light);
+  outline-offset: 2px;
+}

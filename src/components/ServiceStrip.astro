@@ -1,0 +1,28 @@
+---
+import { serviceStrip } from '../data/site';
+---
+
+<div class="service-strip">
+  {serviceStrip.map((item) => <div class="cell">{item.toUpperCase()}</div>)}
+</div>
+
+<style>
+  .service-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--maroon-dark);
+    color: var(--gold-pale);
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+  .cell {
+    padding: 18px 8px;
+    text-align: center;
+    border-right: 1px solid rgba(227, 193, 115, 0.15);
+    letter-spacing: 0.12em;
+    font-size: clamp(12px, 1.4vw, 15px);
+  }
+  .cell:last-child {
+    border-right: 0;
+  }
+</style>

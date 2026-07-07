@@ -1,0 +1,241 @@
+---
+import { site, damageTypes } from '../data/site';
+---
+
+<section id="contact" class="contact">
+  <div class="container contact-grid">
+    <div>
+      <span class="eyebrow">Request an Estimate</span>
+      <h2 class="contact-title">Talk to a Specialist Today</h2>
+      <p class="contact-lede">
+        Tell us what happened. We respond fast, assess honestly, and get to work — with your
+        insurance handled directly.
+      </p>
+
+      <ul class="contact-list">
+        <li>
+          <span class="icon" aria-hidden="true">☏</span>
+          <div>
+            <div class="c-label">24/7 Emergency Line</div>
+            <a class="c-value" href={site.phoneHref}>{site.phone}</a>
+          </div>
+        </li>
+        <li>
+          <span class="icon" aria-hidden="true">✉</span>
+          <div>
+            <div class="c-label">Email</div>
+            <a class="c-value" href={`mailto:${site.email}`}>{site.email}</a>
+          </div>
+        </li>
+        <li>
+          <span class="icon" aria-hidden="true">◎</span>
+          <div>
+            <div class="c-label">Service Area</div>
+            <div class="c-value">{site.serviceArea}</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <form class="panel" id="estimate-form" data-email={site.email}>
+      <div class="fields">
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="cf-phone">Phone</label>
+          <input id="cf-phone" name="phone" type="tel" autocomplete="tel" />
+        </div>
+        <div class="field span-2">
+          <label for="cf-type">Type of Damage</label>
+          <select id="cf-type" name="type" class="select">
+            {damageTypes.map((t) => <option value={t}>{t}</option>)}
+          </select>
+        </div>
+        <div class="field span-2">
+          <label for="cf-message">What happened?</label>
+          <textarea id="cf-message" name="message" rows="4"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="submit">Request My Estimate</button>
+      <p class="form-note" id="form-note" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  // Static hosting (GitHub Pages) can't accept a form POST, so we progressively
+  // enhance the form into a pre-filled email to the business. Without JS the
+  // form simply doesn't submit anywhere — no broken action, no lost data promise.
+  const form = document.getElementById('estimate-form') as HTMLFormElement | null;
+  if (form) {
+    const note = document.getElementById('form-note');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const to = form.dataset.email ?? '';
+      const subject = `Restoration estimate request — ${data.get('type') ?? ''}`;
+      const body = [
+        `Name: ${data.get('name') ?? ''}`,
+        `Phone: ${data.get('phone') ?? ''}`,
+        `Type of Damage: ${data.get('type') ?? ''}`,
+        '',
+        'What happened:',
+        `${data.get('message') ?? ''}`,
+      ].join('\n');
+      const href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      if (note) note.textContent = 'Opening your email app to send the request…';
+      window.location.href = href;
+    });
+  }
+</script>
+
+<style>
+  .contact {
+    background: var(--maroon-dark);
+    color: var(--parchment);
+    padding: clamp(56px, 7vw, 80px) var(--gutter);
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 56px;
+  }
+  .eyebrow {
+    display: block;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+  }
+  .contact-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(26px, 3.5vw, 34px);
+    line-height: 1.15;
+    margin: 0 0 18px;
+    color: var(--parchment);
+  }
+  .contact-lede {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(246, 236, 217, 0.8);
+    margin: 0 0 30px;
+  }
+
+  .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .contact-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .icon {
+    width: 44px;
+    height: 44px;
+    flex: none;
+    border-radius: 50%;
+    border: 1px solid rgba(227, 193, 115, 0.4);
+    display: grid;
+    place-items: center;
+    color: var(--gold-light);
+    font-family: var(--font-display);
+    font-weight: 700;
+  }
+  .c-label {
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 12px;
+    color: rgba(234, 211, 154, 0.7);
+  }
+  .c-value {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--parchment);
+    display: inline-block;
+  }
+  a.c-value:hover {
+    color: var(--gold-light);
+  }
+
+  /* Form panel */
+  .panel {
+    background: rgba(246, 236, 217, 0.05);
+    border: 1px solid rgba(227, 193, 115, 0.22);
+    border-radius: 6px;
+    padding: 32px;
+  }
+  .fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .span-2 {
+    grid-column: 1 / 3;
+  }
+  .field label {
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 12px;
+    color: var(--gold-pale);
+    display: block;
+    margin-bottom: 7px;
+  }
+  .field input,
+  .field textarea,
+  .field .select {
+    width: 100%;
+    background: rgba(246, 236, 217, 0.08);
+    border: 1px solid rgba(227, 193, 115, 0.3);
+    border-radius: 3px;
+    padding: 12px;
+    color: var(--parchment);
+    font-size: 15px;
+    font-family: var(--font-body);
+  }
+  .field .select {
+    background: rgba(72, 16, 25, 0.6);
+  }
+  .field textarea {
+    resize: vertical;
+  }
+  .field input:focus,
+  .field textarea:focus,
+  .field .select:focus {
+    outline: 2px solid rgba(227, 193, 115, 0.55);
+    outline-offset: 1px;
+  }
+
+  .submit {
+    width: 100%;
+    margin-top: 18px;
+    background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    color: #3a1118;
+    font-family: var(--font-condensed);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 16px;
+    padding: 16px;
+    border-radius: 3px;
+    border: 1px solid #b0832f;
+    cursor: pointer;
+    transition: filter 0.18s;
+  }
+  .submit:hover {
+    filter: brightness(1.05);
+  }
+  .form-note {
+    margin: 12px 0 0;
+    font-size: 13px;
+    color: var(--gold-pale);
+    min-height: 1em;
+  }
+</style>

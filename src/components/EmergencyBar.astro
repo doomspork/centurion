@@ -1,0 +1,33 @@
+---
+import { emergencyBar } from '../data/site';
+---
+
+<div class="emergency-bar">
+  {
+    emergencyBar.map((item, i) => (
+      <Fragment>
+        {i > 0 && <span class="diamond" aria-hidden="true">◆</span>}
+        <span>{item}</span>
+      </Fragment>
+    ))
+  }
+</div>
+
+<style>
+  .emergency-bar {
+    background: var(--maroon-dark);
+    color: var(--gold-pale);
+    font-family: var(--font-condensed);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 12.5px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    padding: 10px 24px;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+</style>

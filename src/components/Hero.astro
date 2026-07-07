@@ -1,0 +1,150 @@
+---
+import { site, heroTrust } from '../data/site';
+---
+
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-frame" aria-hidden="true"></div>
+
+  <div class="hero-inner">
+    <p class="hero-eyebrow">
+      <span class="rule"></span>
+      Water · Fire · Mold · Asbestos
+      <span class="rule"></span>
+    </p>
+    <h1 class="hero-title">When Disaster Strikes, We Stand&nbsp;Guard</h1>
+    <p class="hero-lede">
+      A small, elite crew of certified restoration specialists — on site fast, in full control, and
+      relentless until your property is whole again.
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-gold hero-btn" href={site.phoneHref}>Call 24/7 — {site.phone}</a>
+      <a class="btn btn-outline hero-btn" href="#contact">Request an Estimate</a>
+    </div>
+    <ul class="hero-trust">
+      {
+        heroTrust.map((item, i) => (
+          <li>
+            {i > 0 && <span class="diamond" aria-hidden="true">◆</span>}
+            <span>{item}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    background: var(--maroon);
+    overflow: hidden;
+    min-height: min(78vh, 660px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Layered background stands in for the original hero photo slot:
+     a deep maroon field with a top-lit radial glow and a downward veil. */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(72, 16, 25, 0.72), rgba(72, 16, 25, 0.86)),
+      radial-gradient(120% 90% at 50% 0%, rgba(107, 31, 46, 0.55), rgba(72, 16, 25, 0.96)),
+      var(--maroon);
+  }
+  /* subtle gilt vignette lines */
+  .hero-frame {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(227, 193, 115, 0.18);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: clamp(56px, 8vw, 90px) clamp(20px, 5vw, 40px);
+    max-width: 840px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--gold-light);
+    margin: 0 0 26px;
+  }
+  .hero-eyebrow .rule {
+    width: 34px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--parchment);
+    font-size: clamp(38px, 6vw, 60px);
+    line-height: 1.06;
+    margin: 0 0 22px;
+    letter-spacing: 0.01em;
+    text-wrap: balance;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-lede {
+    font-size: clamp(16px, 2vw, 19px);
+    line-height: 1.6;
+    color: rgba(246, 236, 217, 0.86);
+    margin: 0 auto 34px;
+    max-width: 600px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .hero-btn {
+    font-size: 16px;
+    padding: 17px 34px;
+  }
+  .btn-gold.hero-btn {
+    box-shadow: 0 10px 26px -10px rgba(0, 0, 0, 0.6);
+  }
+
+  .hero-trust {
+    list-style: none;
+    margin: 38px 0 0;
+    padding: 0;
+    display: flex;
+    gap: clamp(14px, 2vw, 26px);
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 12.5px;
+    font-weight: 600;
+    color: rgba(234, 211, 154, 0.9);
+  }
+  .hero-trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 26px);
+  }
+  /* Original hero separators are full-opacity gold (the emergency bar's are .7) */
+  .hero-trust .diamond {
+    opacity: 1;
+  }
+</style>

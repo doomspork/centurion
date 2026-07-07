@@ -1,0 +1,107 @@
+---
+import { credentials, stats } from '../data/site';
+---
+
+<section id="why" class="section why">
+  <div class="frame" aria-hidden="true"></div>
+  <div class="container why-grid">
+    <div>
+      <span class="eyebrow">Why Centurion</span>
+      <h2 class="why-title">A Small Unit,<br />Trained for Everything.</h2>
+      <p class="why-lede">
+        We’re not a call-center franchise. We’re a lean, highly-trained crew that holds industry
+        certification across every service we offer — so the same trusted team that answers your
+        call is the one that restores your property.
+      </p>
+      <div class="badges">
+        {credentials.map((c) => <span class="badge">{c}</span>)}
+      </div>
+    </div>
+
+    <div class="stats">
+      {
+        stats.map((s) => (
+          <div class="stat">
+            <div class="stat-value">{s.value}</div>
+            <div class="stat-label">{s.label}</div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .why {
+    position: relative;
+    background: var(--maroon);
+    color: var(--parchment);
+    overflow: hidden;
+    /* Original caps vertical padding at 80px (vs the shared .section 84px) */
+    padding: clamp(56px, 7vw, 80px) var(--gutter);
+  }
+  .frame {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 1px rgba(227, 193, 115, 0.16);
+    pointer-events: none;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 56px;
+    align-items: center;
+    position: relative;
+  }
+  .eyebrow {
+    display: block;
+    color: var(--gold-light);
+    margin-bottom: 16px;
+  }
+  .why-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(26px, 3.5vw, 34px);
+    line-height: 1.15;
+    margin: 0 0 18px;
+    color: var(--parchment);
+  }
+  .why-lede {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(246, 236, 217, 0.82);
+    margin: 0 0 22px;
+  }
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .stat {
+    background: rgba(246, 236, 217, 0.06);
+    border: 1px solid rgba(227, 193, 115, 0.25);
+    border-radius: 5px;
+    padding: 26px 24px;
+  }
+  .stat-value {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--gold-light);
+    font-size: 34px;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 13px;
+    color: rgba(246, 236, 217, 0.8);
+    margin-top: 6px;
+  }
+</style>

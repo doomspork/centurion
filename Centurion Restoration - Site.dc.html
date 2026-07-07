@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{background:#FBF6EC;font-family:'Barlow',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#2A1B1E}
+  a{color:#8a2a3b;text-decoration:none}
+  a:hover{color:#6B1F2E}
+  .cr-nav a{color:#2A1B1E;transition:color .18s}
+  .cr-nav a:hover{color:#6B1F2E}
+</style>
+</helmet>
+
+<div style="width:100%;overflow-x:hidden">
+
+  <!-- emergency strip -->
+  <sc-if value="{{ showBar }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#481019;color:#EAD39A;font-family:'Barlow Condensed',sans-serif;letter-spacing:.15em;text-transform:uppercase;font-size:12.5px;font-weight:600;display:flex;justify-content:center;align-items:center;gap:22px;padding:10px 24px;flex-wrap:wrap;text-align:center">
+      <span>24/7 Emergency Response</span><span style="color:#C8993F;opacity:.7">◆</span><span>Licensed &amp; Insured</span><span style="color:#C8993F;opacity:.7">◆</span><span>We Bill Your Insurance Directly</span>
+    </div>
+  </sc-if>
+
+  <!-- nav -->
+  <div class="cr-nav" style="position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:14px clamp(20px,4vw,48px);background:rgba(251,246,236,.94);backdrop-filter:blur(8px);border-bottom:1px solid rgba(107,31,46,.12);flex-wrap:wrap">
+    <div style="display:flex;align-items:center;gap:13px">
+      <img src="assets/logo.png" alt="Centurion Restoration crest" style="height:52px;width:52px;object-fit:contain">
+      <div style="line-height:1.05">
+        <div style="font-family:'Cinzel',serif;font-weight:800;color:#6B1F2E;font-size:16px;letter-spacing:.05em">CENTURION</div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;color:#C8993F;font-size:11px;letter-spacing:.34em">RESTORATION</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:clamp(14px,2vw,28px);font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.13em;font-weight:600;font-size:13.5px;flex-wrap:wrap">
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#process">Process</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" style="background:linear-gradient(180deg,#E3C173,#C8993F);color:#3a1118;padding:11px 20px;border-radius:3px;border:1px solid #b0832f;letter-spacing:.1em">Call (555) 010-0199</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:relative;background:#6B1F2E;overflow:hidden;min-height:min(78vh,660px);display:flex;align-items:center;justify-content:center">
+    <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="cr-site-hero" shape="rect" fit="cover" placeholder="Drop a hero photo — crew on site / restored home" hint-size="100%,100%" style="position:absolute;inset:0;width:100%;height:100%"></x-import>
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(72,16,25,.72),rgba(72,16,25,.86)),radial-gradient(120% 90% at 50% 0%,rgba(107,31,46,.35),rgba(72,16,25,.9));pointer-events:none"></div>
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(227,193,115,.18);pointer-events:none"></div>
+    <div style="position:relative;z-index:2;text-align:center;padding:clamp(56px,8vw,90px) clamp(20px,5vw,40px);max-width:840px;pointer-events:none">
+      <div style="display:inline-flex;align-items:center;gap:12px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.3em;font-weight:600;font-size:13px;color:#E3C173;margin-bottom:26px">
+        <span style="width:34px;height:1px;background:#C8993F"></span>Water · Fire · Mold · Asbestos<span style="width:34px;height:1px;background:#C8993F"></span>
+      </div>
+      <h1 style="font-family:'Cinzel',serif;font-weight:800;color:#F6ECD9;font-size:clamp(38px,6vw,60px);line-height:1.06;margin:0 0 22px;letter-spacing:.01em;text-wrap:balance;text-shadow:0 2px 24px rgba(0,0,0,.4)">When Disaster Strikes, We Stand&nbsp;Guard</h1>
+      <p style="font-size:clamp(16px,2vw,19px);line-height:1.6;color:rgba(246,236,217,.86);margin:0 auto 34px;max-width:600px">A small, elite crew of certified restoration specialists — on site fast, in full control, and relentless until your property is whole again.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;pointer-events:auto">
+        <a href="#contact" style="background:linear-gradient(180deg,#E3C173,#C8993F);color:#3a1118;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:16px;padding:17px 34px;border-radius:3px;border:1px solid #b0832f;box-shadow:0 10px 26px -10px rgba(0,0,0,.6)">Call 24/7 — (555) 010-0199</a>
+        <a href="#contact" style="background:transparent;color:#EAD39A;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:16px;padding:17px 34px;border-radius:3px;border:1px solid rgba(227,193,115,.55)">Request an Estimate</a>
+      </div>
+      <div style="display:flex;gap:clamp(14px,2vw,26px);justify-content:center;flex-wrap:wrap;margin-top:38px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:12.5px;font-weight:600;color:rgba(234,211,154,.9)">
+        <span>IICRC Certified</span><span style="color:#C8993F">◆</span><span>Licensed &amp; Insured</span><span style="color:#C8993F">◆</span><span>Family-Owned</span><span style="color:#C8993F">◆</span><span>Works With Your Insurance</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- service quick strip -->
+  <sc-if value="{{ showStrip }}" hint-placeholder-val="{{ true }}">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);background:#481019;color:#EAD39A;font-family:'Cinzel',serif;font-weight:600">
+      <div style="padding:18px 8px;text-align:center;border-right:1px solid rgba(227,193,115,.15);letter-spacing:.12em;font-size:clamp(12px,1.4vw,15px)">WATER</div>
+      <div style="padding:18px 8px;text-align:center;border-right:1px solid rgba(227,193,115,.15);letter-spacing:.12em;font-size:clamp(12px,1.4vw,15px)">FIRE</div>
+      <div style="padding:18px 8px;text-align:center;border-right:1px solid rgba(227,193,115,.15);letter-spacing:.12em;font-size:clamp(12px,1.4vw,15px)">MOLD</div>
+      <div style="padding:18px 8px;text-align:center;letter-spacing:.12em;font-size:clamp(12px,1.4vw,15px)">ASBESTOS</div>
+    </div>
+  </sc-if>
+
+  <!-- SERVICES -->
+  <div id="services" style="padding:clamp(56px,7vw,84px) clamp(20px,5vw,56px);background:#FBF6EC">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:52px">
+        <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.3em;font-weight:600;font-size:13px;color:#C8993F;margin-bottom:14px">What We Restore</div>
+        <h2 style="font-family:'Cinzel',serif;font-weight:700;color:#6B1F2E;font-size:clamp(28px,4vw,38px);margin:0;letter-spacing:.01em">Four Fronts. One Standard.</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px">
+        <div style="background:#fff;border:1px solid rgba(107,31,46,.14);border-top:3px solid #C8993F;border-radius:5px;padding:30px 26px 32px">
+          <div style="width:58px;height:58px;border-radius:50%;border:2px solid #C8993F;color:#6B1F2E;font-family:'Cinzel',serif;font-weight:700;font-size:22px;display:grid;place-items:center;background:rgba(200,153,63,.1);margin-bottom:20px">I</div>
+          <h3 style="font-family:'Cinzel',serif;font-weight:700;color:#2A1B1E;font-size:19px;margin:0 0 10px;letter-spacing:.02em">Water Damage</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#5a4a4d;margin:0">Burst pipes, floods, and storm intrusion. Rapid extraction, structural drying, and moisture mapping to stop the damage at its source.</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(107,31,46,.14);border-top:3px solid #C8993F;border-radius:5px;padding:30px 26px 32px">
+          <div style="width:58px;height:58px;border-radius:50%;border:2px solid #C8993F;color:#6B1F2E;font-family:'Cinzel',serif;font-weight:700;font-size:22px;display:grid;place-items:center;background:rgba(200,153,63,.1);margin-bottom:20px">II</div>
+          <h3 style="font-family:'Cinzel',serif;font-weight:700;color:#2A1B1E;font-size:19px;margin:0 0 10px;letter-spacing:.02em">Fire &amp; Smoke</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#5a4a4d;margin:0">Soot, char, and stubborn odor. We clean, deodorize, and rebuild — restoring everything the fire tried to take.</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(107,31,46,.14);border-top:3px solid #C8993F;border-radius:5px;padding:30px 26px 32px">
+          <div style="width:58px;height:58px;border-radius:50%;border:2px solid #C8993F;color:#6B1F2E;font-family:'Cinzel',serif;font-weight:700;font-size:22px;display:grid;place-items:center;background:rgba(200,153,63,.1);margin-bottom:20px">III</div>
+          <h3 style="font-family:'Cinzel',serif;font-weight:700;color:#2A1B1E;font-size:19px;margin:0 0 10px;letter-spacing:.02em">Mold Remediation</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#5a4a4d;margin:0">Containment, HEPA filtration, and safe removal. We eliminate the mold and the moisture that feeds it.</p>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(107,31,46,.14);border-top:3px solid #C8993F;border-radius:5px;padding:30px 26px 32px">
+          <div style="width:58px;height:58px;border-radius:50%;border:2px solid #C8993F;color:#6B1F2E;font-family:'Cinzel',serif;font-weight:700;font-size:22px;display:grid;place-items:center;background:rgba(200,153,63,.1);margin-bottom:20px">IV</div>
+          <h3 style="font-family:'Cinzel',serif;font-weight:700;color:#2A1B1E;font-size:19px;margin:0 0 10px;letter-spacing:.02em">Asbestos Abatement</h3>
+          <p style="font-size:14.5px;line-height:1.6;color:#5a4a4d;margin:0">Certified, code-compliant removal and disposal. Handled safely, documented fully, and done right the first time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <div id="why" style="position:relative;background:#6B1F2E;color:#F6ECD9;padding:clamp(56px,7vw,80px) clamp(20px,5vw,56px);overflow:hidden">
+    <div style="position:absolute;inset:0;box-shadow:inset 0 0 0 1px rgba(227,193,115,.16);pointer-events:none"></div>
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px;align-items:center;position:relative">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.3em;font-weight:600;font-size:13px;color:#E3C173;margin-bottom:16px">Why Centurion</div>
+        <h2 style="font-family:'Cinzel',serif;font-weight:700;font-size:clamp(26px,3.5vw,34px);line-height:1.15;margin:0 0 18px;color:#F6ECD9">A Small Unit,<br>Trained for Everything.</h2>
+        <p style="font-size:16px;line-height:1.7;color:rgba(246,236,217,.82);margin:0 0 22px">We're not a call-center franchise. We're a lean, highly-trained crew that holds industry certification across every service we offer — so the same trusted team that answers your call is the one that restores your property.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:10px">
+          <span style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;font-weight:600;color:#EAD39A;border:1px solid rgba(227,193,115,.4);border-radius:3px;padding:8px 13px">IICRC Certified</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;font-weight:600;color:#EAD39A;border:1px solid rgba(227,193,115,.4);border-radius:3px;padding:8px 13px">EPA Lead-Safe</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;font-weight:600;color:#EAD39A;border:1px solid rgba(227,193,115,.4);border-radius:3px;padding:8px 13px">Licensed Abatement</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;font-weight:600;color:#EAD39A;border:1px solid rgba(227,193,115,.4);border-radius:3px;padding:8px 13px">OSHA Trained</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:12.5px;font-weight:600;color:#EAD39A;border:1px solid rgba(227,193,115,.4);border-radius:3px;padding:8px 13px">Bonded &amp; Insured</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div style="background:rgba(246,236,217,.06);border:1px solid rgba(227,193,115,.25);border-radius:5px;padding:26px 24px">
+          <div style="font-family:'Cinzel',serif;font-weight:800;color:#E3C173;font-size:34px;line-height:1">24/7</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:rgba(246,236,217,.8);margin-top:6px">Emergency Response</div>
+        </div>
+        <div style="background:rgba(246,236,217,.06);border:1px solid rgba(227,193,115,.25);border-radius:5px;padding:26px 24px">
+          <div style="font-family:'Cinzel',serif;font-weight:800;color:#E3C173;font-size:34px;line-height:1">100%</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:rgba(246,236,217,.8);margin-top:6px">Certified Crew</div>
+        </div>
+        <div style="background:rgba(246,236,217,.06);border:1px solid rgba(227,193,115,.25);border-radius:5px;padding:26px 24px">
+          <div style="font-family:'Cinzel',serif;font-weight:800;color:#E3C173;font-size:34px;line-height:1">Direct</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:rgba(246,236,217,.8);margin-top:6px">Insurance Billing</div>
+        </div>
+        <div style="background:rgba(246,236,217,.06);border:1px solid rgba(227,193,115,.25);border-radius:5px;padding:26px 24px">
+          <div style="font-family:'Cinzel',serif;font-weight:800;color:#E3C173;font-size:34px;line-height:1">Local</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:rgba(246,236,217,.8);margin-top:6px">Family-Owned</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div id="process" style="padding:clamp(56px,7vw,84px) clamp(20px,5vw,56px);background:#F1E7D5">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:52px">
+        <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.3em;font-weight:600;font-size:13px;color:#C8993F;margin-bottom:14px">How It Works</div>
+        <h2 style="font-family:'Cinzel',serif;font-weight:700;color:#6B1F2E;font-size:clamp(28px,4vw,38px);margin:0">From Crisis to Calm</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:28px">
+        <div style="text-align:center;padding:0 12px">
+          <div style="width:66px;height:66px;border-radius:50%;background:#6B1F2E;color:#E3C173;font-family:'Cinzel',serif;font-weight:700;font-size:24px;display:grid;place-items:center;margin:0 auto 20px;box-shadow:0 8px 20px -8px rgba(72,16,25,.6)">I</div>
+          <h3 style="font-family:'Cinzel',serif;font-weight:700;color:#2A1B1E;font-size:17px;margin:0 0 8px">Call</h3>
+          <p style="font-size:14px;line-height:1.55;color:#5a4a4d;margin:0">One call, day or night. We answer and mobilize immediately.</p>
+        </div>
+        <div style="text-align:center;padding:0 12px">
+          <div style="width:66px;height:66px;border-radius:50%;background:#6B1F2E;color:#E3C173;font-family:'Cinzel',serif;font-weight:700;font-size:24px;display:grid;place-items:center;margin:0 auto 20px;box-shadow:0 8px 20px -8px rgba(72,16,25,.6)">II</div>
+          <h3 style="font-family:'Cinzel',serif;font-weight:700;color:#2A1B1E;font-size:17px;margin:0 0 8px">Assess</h3>
+          <p style="font-size:14px;line-height:1.55;color:#5a4a4d;margin:0">On-site inspection, moisture and contaminant testing, and a clear scope.</p>
+        </div>
+        <div style="text-align:center;padding:0 12px">
+          <div style="width:66px;height:66px;border-radius:50%;background:#6B1F2E;color:#E3C173;font-family:'Cinzel',serif;font-weight:700;font-size:24px;display:grid;place-items:center;margin:0 auto 20px;box-shadow:0 8px 20px -8px rgba(72,16,25,.6)">III</div>
+          <h3 style="font-family:'Cinzel',serif;font-weight:700;color:#2A1B1E;font-size:17px;margin:0 0 8px">Restore</h3>
+          <p style="font-size:14px;line-height:1.55;color:#5a4a4d;margin:0">Mitigation, remediation, and rebuild by certified specialists.</p>
+        </div>
+        <div style="text-align:center;padding:0 12px">
+          <div style="width:66px;height:66px;border-radius:50%;background:#6B1F2E;color:#E3C173;font-family:'Cinzel',serif;font-weight:700;font-size:24px;display:grid;place-items:center;margin:0 auto 20px;box-shadow:0 8px 20px -8px rgba(72,16,25,.6)">IV</div>
+          <h3 style="font-family:'Cinzel',serif;font-weight:700;color:#2A1B1E;font-size:17px;margin:0 0 8px">Recover</h3>
+          <p style="font-size:14px;line-height:1.55;color:#5a4a4d;margin:0">Final walkthrough, full documentation, and insurance handoff.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REVIEWS -->
+  <div id="reviews" style="padding:clamp(56px,7vw,84px) clamp(20px,5vw,56px);background:#FBF6EC">
+    <div style="max-width:1180px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:48px">
+        <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.3em;font-weight:600;font-size:13px;color:#C8993F;margin-bottom:14px">In Their Words</div>
+        <h2 style="font-family:'Cinzel',serif;font-weight:700;color:#6B1F2E;font-size:clamp(28px,4vw,38px);margin:0">Neighbors Who Trusted Us</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px">
+        <div style="background:#fff;border:1px solid rgba(107,31,46,.14);border-radius:5px;padding:30px 28px">
+          <div style="color:#C8993F;font-size:18px;letter-spacing:3px;margin-bottom:14px">★★★★★</div>
+          <p style="font-size:15px;line-height:1.65;color:#3a2226;margin:0 0 20px;font-style:italic">"They were at our house within the hour of a basement flood. Calm, professional, and thorough — they made a nightmare feel handled."</p>
+          <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-weight:600;font-size:13px;color:#6B1F2E">M. Rivera <span style="color:#9a8a8d;font-weight:500">· Homeowner</span></div>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(107,31,46,.14);border-radius:5px;padding:30px 28px">
+          <div style="color:#C8993F;font-size:18px;letter-spacing:3px;margin-bottom:14px">★★★★★</div>
+          <p style="font-size:15px;line-height:1.65;color:#3a2226;margin:0 0 20px;font-style:italic">"After a kitchen fire, they handled everything — including the insurance paperwork. You'd never know it happened."</p>
+          <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-weight:600;font-size:13px;color:#6B1F2E">D. Chen <span style="color:#9a8a8d;font-weight:500">· Property Manager</span></div>
+        </div>
+        <div style="background:#fff;border:1px solid rgba(107,31,46,.14);border-radius:5px;padding:30px 28px">
+          <div style="color:#C8993F;font-size:18px;letter-spacing:3px;margin-bottom:14px">★★★★★</div>
+          <p style="font-size:15px;line-height:1.65;color:#3a2226;margin:0 0 20px;font-style:italic">"Certified, careful, and honest about the mold in our crawlspace. They fixed the root cause, not just the symptom."</p>
+          <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-weight:600;font-size:13px;color:#6B1F2E">S. Patel <span style="color:#9a8a8d;font-weight:500">· Homeowner</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EMERGENCY CTA -->
+  <div style="background:linear-gradient(180deg,#E3C173,#C8993F);color:#3a1118;padding:clamp(40px,5vw,52px) clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap">
+    <div style="text-align:center">
+      <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.24em;font-weight:600;font-size:13px;margin-bottom:8px">Every Hour Counts</div>
+      <h2 style="font-family:'Cinzel',serif;font-weight:800;font-size:clamp(24px,3.5vw,32px);margin:0;color:#481019">Water rising? Smoke in the air?</h2>
+    </div>
+    <a href="#contact" style="background:#481019;color:#EAD39A;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:17px;padding:18px 36px;border-radius:3px;white-space:nowrap">Call Now — (555) 010-0199</a>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" style="background:#481019;color:#F6ECD9;padding:clamp(56px,7vw,80px) clamp(20px,5vw,56px)">
+    <div style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:56px">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.3em;font-weight:600;font-size:13px;color:#E3C173;margin-bottom:16px">Request an Estimate</div>
+        <h2 style="font-family:'Cinzel',serif;font-weight:700;font-size:clamp(26px,3.5vw,34px);line-height:1.15;margin:0 0 18px;color:#F6ECD9">Talk to a Specialist Today</h2>
+        <p style="font-size:16px;line-height:1.7;color:rgba(246,236,217,.8);margin:0 0 30px">Tell us what happened. We respond fast, assess honestly, and get to work — with your insurance handled directly.</p>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="width:44px;height:44px;flex:none;border-radius:50%;border:1px solid rgba(227,193,115,.4);display:grid;place-items:center;color:#E3C173;font-family:'Cinzel',serif;font-weight:700">☏</div>
+            <div><div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:rgba(234,211,154,.7)">24/7 Emergency Line</div><div style="font-size:19px;font-weight:600;color:#F6ECD9">(555) 010-0199</div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="width:44px;height:44px;flex:none;border-radius:50%;border:1px solid rgba(227,193,115,.4);display:grid;place-items:center;color:#E3C173;font-family:'Cinzel',serif;font-weight:700">✉</div>
+            <div><div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:rgba(234,211,154,.7)">Email</div><div style="font-size:19px;font-weight:600;color:#F6ECD9"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eb838e879bab888e859f9e99828485998e989f84998a9f828485c5888486">[email&#160;protected]</a></div></div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px">
+            <div style="width:44px;height:44px;flex:none;border-radius:50%;border:1px solid rgba(227,193,115,.4);display:grid;place-items:center;color:#E3C173;font-family:'Cinzel',serif;font-weight:700">◎</div>
+            <div><div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:rgba(234,211,154,.7)">Service Area</div><div style="font-size:19px;font-weight:600;color:#F6ECD9">[Your city &amp; surrounding counties]</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:rgba(246,236,217,.05);border:1px solid rgba(227,193,115,.22);border-radius:6px;padding:32px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div><label style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:#EAD39A;display:block;margin-bottom:7px">Name</label><input type="text" style="width:100%;background:rgba(246,236,217,.08);border:1px solid rgba(227,193,115,.3);border-radius:3px;padding:12px;color:#F6ECD9;font-size:15px;font-family:'Barlow',sans-serif"></div>
+          <div><label style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:#EAD39A;display:block;margin-bottom:7px">Phone</label><input type="text" style="width:100%;background:rgba(246,236,217,.08);border:1px solid rgba(227,193,115,.3);border-radius:3px;padding:12px;color:#F6ECD9;font-size:15px;font-family:'Barlow',sans-serif"></div>
+          <div style="grid-column:1/3"><label style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:#EAD39A;display:block;margin-bottom:7px">Type of Damage</label><select style="width:100%;background:rgba(72,16,25,.6);border:1px solid rgba(227,193,115,.3);border-radius:3px;padding:12px;color:#F6ECD9;font-size:15px;font-family:'Barlow',sans-serif"><option>Water Damage</option><option>Fire &amp; Smoke</option><option>Mold</option><option>Asbestos</option><option>Not sure yet</option></select></div>
+          <div style="grid-column:1/3"><label style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:#EAD39A;display:block;margin-bottom:7px">What happened?</label><textarea rows="4" style="width:100%;background:rgba(246,236,217,.08);border:1px solid rgba(227,193,115,.3);border-radius:3px;padding:12px;color:#F6ECD9;font-size:15px;font-family:'Barlow',sans-serif;resize:vertical"></textarea></div>
+        </div>
+        <button style="width:100%;margin-top:18px;background:linear-gradient(180deg,#E3C173,#C8993F);color:#3a1118;font-family:'Barlow Condensed',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.12em;font-size:16px;padding:16px;border-radius:3px;border:1px solid #b0832f;cursor:pointer">Request My Estimate</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#2e0c13;color:rgba(246,236,217,.7);padding:36px clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;border-top:1px solid rgba(227,193,115,.15)">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="assets/logo.png" alt="" style="height:40px;width:40px;object-fit:contain">
+      <div style="font-family:'Cinzel',serif;font-weight:700;color:#EAD39A;font-size:14px;letter-spacing:.06em">CENTURION RESTORATION</div>
+    </div>
+    <div style="font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:12px">© 2026 Centurion Restoration · License #[000000] · Water · Fire · Mold · Asbestos</div>
+  </div>
+
+</div>
+</x-dc>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1200,&quot;height&quot;:900},&quot;showEmergencyBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;},&quot;showServiceStrip&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      showBar: this.props.showEmergencyBar ?? true,
+      showStrip: this.props.showServiceStrip ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>

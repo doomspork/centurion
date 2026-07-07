@@ -1,0 +1,48 @@
+---
+import { site } from '../data/site';
+import Crest from './Crest.astro';
+---
+
+<footer class="footer">
+  <div class="foot-brand">
+    <Crest size={40} class="foot-crest" title="" />
+    <span class="foot-name">CENTURION RESTORATION</span>
+  </div>
+  <div class="foot-meta">
+    © {site.year} {site.name} · License #{site.licenseNumber} · Water · Fire · Mold · Asbestos
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--maroon-darkest);
+    color: rgba(246, 236, 217, 0.7);
+    padding: 36px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    border-top: 1px solid rgba(227, 193, 115, 0.15);
+  }
+  .foot-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* Crest inherits this via currentColor; .foot-name sets its own. */
+    color: var(--gold-pale);
+  }
+  .foot-name {
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--gold-pale);
+    font-size: 14px;
+    letter-spacing: 0.06em;
+  }
+  .foot-meta {
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 12px;
+  }
+</style>
