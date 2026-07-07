@@ -26,12 +26,14 @@ npm run preview  # serve the production build locally
 
 ```
 src/
+  assets/logo.png       # brand badge (optimized at build via astro:assets)
   data/site.ts          # all copy + config toggles (single source of truth)
   styles/global.css     # design tokens + shared primitives
   layouts/Layout.astro  # <head>, fonts, favicon
-  components/            # Nav, Hero, Services, WhyUs, Process, Reviews, …
+  components/            # Nav, Hero, Services, WhyUs, Process, Reviews, Logo, …
   pages/index.astro     # composes the page
-public/favicon.svg      # crest favicon
+public/favicon.png      # favicon + apple-touch-icon (from the logo)
+public/og-image.png     # social share card (from the logo)
 ```
 
 ## Deployment

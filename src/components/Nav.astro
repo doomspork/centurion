@@ -1,11 +1,11 @@
 ---
 import { site, nav } from '../data/site';
-import Crest from './Crest.astro';
+import Logo from './Logo.astro';
 ---
 
 <header class="nav">
   <a class="brand" href="#top" aria-label={`${site.name} home`}>
-    <Crest size={52} class="brand-crest" />
+    <Logo size={52} alt="" />
     <span class="brand-word">
       <span class="brand-name">CENTURION</span>
       <span class="brand-sub">RESTORATION</span>
@@ -38,7 +38,6 @@ import Crest from './Crest.astro';
     display: flex;
     align-items: center;
     gap: 13px;
-    /* Crest inherits this via currentColor; the wordmark spans set their own. */
     color: var(--maroon);
   }
   .brand-word {

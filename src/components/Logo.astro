@@ -1,0 +1,28 @@
+---
+/**
+ * The Centurion Restoration brand badge. Runs the full-resolution source
+ * (src/assets/logo.png) through Astro's image pipeline, which emits a
+ * resized, optimized, base-path-correct asset at build time — so a 52px mark
+ * doesn't ship a 2.5 MB download. Rendered at 2x for crisp retina display.
+ *
+ * Pass an empty `alt` to render it decoratively (e.g. next to a text wordmark).
+ */
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+
+interface Props {
+  size?: number;
+  class?: string;
+  alt?: string;
+}
+const { size = 52, class: className, alt = 'Centurion Restoration' } = Astro.props;
+---
+
+<Image
+  src={logo}
+  alt={alt}
+  width={size * 2}
+  height={size * 2}
+  class={className}
+  style={`width:${size}px;height:${size}px;flex:none;display:block`}
+/>

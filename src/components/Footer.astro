@@ -1,11 +1,11 @@
 ---
 import { site } from '../data/site';
-import Crest from './Crest.astro';
+import Logo from './Logo.astro';
 ---
 
 <footer class="footer">
   <div class="foot-brand">
-    <Crest size={40} class="foot-crest" title="" />
+    <Logo size={40} alt="" />
     <span class="foot-name">CENTURION RESTORATION</span>
   </div>
   <div class="foot-meta">
@@ -29,8 +29,6 @@ import Crest from './Crest.astro';
     display: flex;
     align-items: center;
     gap: 12px;
-    /* Crest inherits this via currentColor; .foot-name sets its own. */
-    color: var(--gold-pale);
   }
   .foot-name {
     font-family: var(--font-display);
